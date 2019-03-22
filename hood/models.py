@@ -15,3 +15,8 @@ class User(models.Model):
 
 class Business(models.Model):
     pass
+
+
+
+class Location(models.Model):
+    pass
