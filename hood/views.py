@@ -6,13 +6,16 @@ from .models import *
 
 # Create your views here.
 def homm(request):
-    return render(request,'home.html')
+
+    biz = Business.objects.all()
+    return render(request,'home.html', locals())
+
 
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save
+            form.save()
         return redirect('login')
     else:
         form = UserCreationForm()

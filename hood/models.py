@@ -4,30 +4,8 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 import datetime as dt
+from django.shortcuts import get_object_or_404
 # Create your models here.
-
-class UserProfile(models.Model):
-    user=models.OneToOneField(User, on_delete=models.CASCADE,related_name="profile")
-    name = models.CharField(max_length=30, blank=True)
-    email_address = models.EmailField(max_length=70,blank=True)
-
-    def __str__(self):
-        return self.user
-    class Meta:
-        ordering= ['user']
-
-    def save_user(self):
-        self.save()
-
-    @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
-            UserProfile.objects.create(user=instance)
-
-    @receiver(post_save, sender=User)
-    def save_user_profile(sender,instance, **kwargs):
-        instance.profile.save()
-
 
 
 class Location(models.Model):
@@ -54,3 +32,27 @@ class Business(models.Model):
 
     def __str__(self):
         return self.business_name
+
+
+
+class UserProfile(models.Model):
+    user=models.OneToOneField(User, on_delete=models.CASCADE,related_name="profile")
+    name = models.CharField(max_length=30, blank=True)
+    email_address = models.EmailField(max_length=70,blank=True)
+    neighborhood_id = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE,related_name="profile_hood")
+    def __str__(self):
+        return self.name
+        class Meta:
+            ordering= ['user']
+
+            def save_user(self):
+                self.save()
+
+                @receiver(post_save, sender=User)
+                def create_user_profile(sender, instance, created, **kwargs):
+                    if created:
+                        UserProfile.objects.create(user=instance)
+
+                        @receiver(post_save, sender=User)
+                        def save_user_profile(sender,instance, **kwargs):
+                            instance.profile.save()
