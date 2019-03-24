@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4%}
+{% load crispy_forms_tags %}
+{% load static %}
+<form method='post' action='{% url 'home'%}'>
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input type="hidden" name="user_id" value="{{user.id}}">
+  <input type="submit" name='Submit' value="Submit">
+</form>
+
+{%endblock%}

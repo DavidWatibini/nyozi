@@ -39,7 +39,7 @@ class Location(models.Model):
 
 class NeighbourHood (models.Model):
     user_id = models.ForeignKey(User,blank=True, on_delete=models.CASCADE,related_name='user',null=True)
-    neighbourhood_name = models.CharField(max_length=30, blank=True)
+    hood_name = models.CharField(max_length=30, blank=True)
     location_id = models.ForeignKey(Location,blank=True, on_delete=models.CASCADE,related_name='location',null=True)
 
     def __str__(self):
