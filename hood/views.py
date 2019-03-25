@@ -51,3 +51,16 @@ def post(request):
     else:
         form  = MakePostForm()
     return render(request,'post.html',locals())
+
+def search_business(request):
+
+    if 'business' in request.GET and request.GET["business"]:
+        search_term = request.GET.get("business")
+        searched_business = Business.search_by_business_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',locals())
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',locals())

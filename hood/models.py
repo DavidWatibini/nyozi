@@ -33,6 +33,10 @@ class Business(models.Model):
     def __str__(self):
         return self.business_name
 
+    @classmethod
+    def search_by_business_name(cls,search_term):
+        project = Business.objects.filter(business_name__icontains = search_term)
+        return project
 
 
 class UserProfile(models.Model):
