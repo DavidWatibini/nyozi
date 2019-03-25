@@ -61,3 +61,22 @@ center{
 .one h1{
 color: #745B28
 }
+.login{
+  padding: 10px;
+  padding-top: 0;
+  border: 1px solid black;
+  box-shadow: -1px 1px 16px -1px rgba(0, 0, 0, 0.75);
+  margin: 10px;
+  overflow: hidden;
+  transition: transform 1s;
+  width: 50%;
+  margin-top: 10%;
+  margin-left: 25%;
+}
+.login h5{
+  text-align: center;
+  font-family: 'Margarine', cursive;
+}
+body{
+  overflow-x: hidden;
+}
