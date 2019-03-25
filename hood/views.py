@@ -8,7 +8,7 @@ from .models import *
 def homm(request,id):
 
     biz = Business.objects.filter(neighborhood_id=id)
-    
+
     return render(request,'home.html', locals())
 
 
@@ -37,3 +37,14 @@ def hood(request):
 def location(request):
     hood = NeighbourHood.objects.all()
     return render(request,'location.html',locals())
+
+def post(request):
+    if request.method == 'POST':
+        form = MakePostForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            form.save()
+        return redirect('home')
+    else:
+        form  = MakePostForm()
+    return render(request,'post.html',locals())

@@ -56,3 +56,8 @@ class UserProfile(models.Model):
             @receiver(post_save, sender=User)
             def save_user_profile(sender,instance, **kwargs):
                 instance.profile.save()
+
+class Post(models.Model):
+
+    image_path = models.ImageField(upload_to = 'gallery/')
+    image_description = models.CharField(max_length=100, blank=True)
