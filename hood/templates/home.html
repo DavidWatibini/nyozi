@@ -2,25 +2,28 @@
 {% block content %}
 {{ block.super}}
 {% load bootstrap4%}
-<p>welcome to you hood {{user}}</p>
-{% for y in biz %}
-{{y.business_name}}
-{% endfor %}
+
+<div class="container-fluid">
+  <p>welcome to you hood {{user}}</p>
+  {% for y in biz %}
+  {{y.business_name}}
+  {% endfor %}
 
 
-{% for x in post %}
+  {% for x in post %}
 
-<img class="card-img-top" src="{{x.image_path.url}}" alt="{{user.username}}" height="200" width="150">
-<div class="card-body">
-  <p class="card-text">{{x.image_description}}</p>
+  <img class="card-img-top" src="{{x.image_path.url}}" alt="{{user.username}}" height="200" width="150">
+  <div class="card-body">
+    <p class="card-text">{{x.image_description}}</p>
+  </div>
+  <div class="card-footer text-muted">
+
+  </div>
+  <ul class="list-group list-group-flush">
+
+  </ul>
+  {% endfor %}
+
+  <button id="button_h" type="button" class="btn btn-outline-secondary"><a href="/post">Make Post</a></button>
 </div>
-<div class="card-footer text-muted">
-
-</div>
-<ul class="list-group list-group-flush">
-
-</ul>
-{% endfor %}
-
-<button id="button_h" type="button" class="btn btn-outline-secondary"><a href="/post">Make Post</a></button>
 {% endblock %}
