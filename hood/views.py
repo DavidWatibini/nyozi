@@ -5,10 +5,10 @@ from .forms import *
 from .models import *
 
 # Create your views here.
-def homm(request):
+def homm(request,id):
 
-    biz = Business.objects.all()
-    hood = NeighbourHood.objects.all()
+    biz = Business.objects.filter(neighborhood_id=id)
+    
     return render(request,'home.html', locals())
 
 
@@ -29,7 +29,11 @@ def hood(request):
 
         if form.is_valid():
             form.save()
-        return redirect('home')
+        return redirect('location')
     else:
         form  = NeighbourHoodForm()
     return render(request,'hood.html',locals())
+
+def location(request):
+    hood = NeighbourHood.objects.all()
+    return render(request,'location.html',locals())

@@ -2,8 +2,11 @@
 {% block content %}
 {{ block.super}}
 {% load bootstrap4%}
-<p>welcome to  my page</p>
-{% for x in hood  %}
-{{x.hood_name}}
+<p>welcome to you hood {{user}}</p>
+{% for y in biz %}
+{{y.business_name}}
 {% endfor %}
+{% for x in hood %}
+  {% endfor %}
+  <button id="button_h" type="button" class="btn btn-outline-secondary"><a href="/post">Make Post</a></button>
 {% endblock %}
