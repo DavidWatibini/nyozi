@@ -11,3 +11,5 @@ urlpatterns= [
     url(r'hood/', views.hood, name="hood"),
     url(r'post',views.post,name="post")
 ]
+if settings.DEBUG:
+    urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
