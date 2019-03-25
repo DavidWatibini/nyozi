@@ -21,7 +21,7 @@ class NeighbourHood (models.Model):
     location_id = models.ForeignKey(Location,blank=True, on_delete=models.CASCADE,related_name='location',null=True)
 
     def __str__(self):
-        return self.neighbourhood_name
+        return self.hood_name
 
 
 class Business(models.Model):
@@ -48,11 +48,11 @@ class UserProfile(models.Model):
             def save_user(self):
                 self.save()
 
-                @receiver(post_save, sender=User)
-                def create_user_profile(sender, instance, created, **kwargs):
-                    if created:
-                        UserProfile.objects.create(user=instance)
+            @receiver(post_save, sender=User)
+            def create_user_profile(sender, instance, created, **kwargs):
+                if created:
+                    UserProfile.objects.create(user=instance)
 
-                        @receiver(post_save, sender=User)
-                        def save_user_profile(sender,instance, **kwargs):
-                            instance.profile.save()
+            @receiver(post_save, sender=User)
+            def save_user_profile(sender,instance, **kwargs):
+                instance.profile.save()

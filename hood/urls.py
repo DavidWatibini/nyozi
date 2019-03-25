@@ -7,5 +7,5 @@ urlpatterns= [
     url(r'^$',views.homm, name="home"),
     url(r'register/', views.register, name="register"),
     url(r'accounts/', include('django.contrib.auth.urls')),
-    url(r'business/', views.business, name="business"),
+    url(r'hood/', views.hood, name="hood"),
 ]

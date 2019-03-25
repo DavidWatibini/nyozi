@@ -3,4 +3,7 @@
 {{ block.super}}
 {% load bootstrap4%}
 <p>welcome to  my page</p>
+{% for x in hood  %}
+{{x.hood_name}}
+{% endfor %}
 {% endblock %}

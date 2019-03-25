@@ -8,6 +8,7 @@ from .models import *
 def homm(request):
 
     biz = Business.objects.all()
+    hood = NeighbourHood.objects.all()
     return render(request,'home.html', locals())
 
 
@@ -22,13 +23,13 @@ def register(request):
 
     return render(request,'signup.html',locals())
 
-def business(request):
+def hood(request):
     if request.method == 'POST':
         form = NeighbourHoodForm(request.POST,request.FILES)
 
         if form.is_valid():
             form.save()
-            return redirect('home')
+        return redirect('home')
     else:
         form  = NeighbourHoodForm()
     return render(request,'hood.html',locals())

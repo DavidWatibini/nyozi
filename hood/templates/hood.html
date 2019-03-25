@@ -4,11 +4,13 @@
 {% load bootstrap4%}
 {% load crispy_forms_tags %}
 {% load static %}
-<form method='post' action='{% url 'home'%}'>
+
+<form method='POST' enctype="multipart/form-data">
   {% csrf_token %}
-  {{ form|crispy }}
-  <input type="hidden" name="user_id" value="{{user.id}}">
-  <input type="submit" name='Submit' value="Submit">
+  {%for fields in form%}
+  {{ fields }}
+  {%endfor%}
+  <button type="submit" name="button">upload</button>
 </form>
 
 {%endblock%}
