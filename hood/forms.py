@@ -9,4 +9,4 @@ class NeighbourHoodForm(forms.ModelForm):
 class MakePostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('image_path','image_description')
+        fields = ('image_path','image_description','hood_id')

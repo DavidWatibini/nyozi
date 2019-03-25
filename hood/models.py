@@ -61,3 +61,4 @@ class Post(models.Model):
 
     image_path = models.ImageField(upload_to = 'gallery/')
     image_description = models.CharField(max_length=100, blank=True)
+    hood_id = models.ForeignKey(NeighbourHood,null=True)

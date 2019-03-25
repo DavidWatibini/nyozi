@@ -9,7 +9,7 @@ def homm(request,id):
 
     biz = Business.objects.filter(neighborhood_id=id)
 
-    post = Post.objects.all()
+    post = Post.objects.filter(hood_id=id)
 
     return render(request,'home.html', locals())
 
@@ -44,7 +44,9 @@ def post(request):
         form = MakePostForm(request.POST,request.FILES)
 
         if form.is_valid():
-            form.save()
+            add = form.save(commit=False)
+            add.hood_id = request.user.profile.neighborhood_id.id
+            add.save()
         return redirect('home',request.user.profile.neighborhood_id.id)
     else:
         form  = MakePostForm()
