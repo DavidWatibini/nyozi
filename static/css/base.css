@@ -96,3 +96,10 @@ body{
   position: relative;
   right: : 20px;
 }
+img{
+  height: 100vh;
+  width: auto;
+}
+.three{
+  margin-left: 8.5%;
+}

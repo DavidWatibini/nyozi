@@ -44,9 +44,7 @@ def post(request):
         form = MakePostForm(request.POST,request.FILES)
 
         if form.is_valid():
-            add = form.save(commit=False)
-            add.hood_id = request.user.profile.neighborhood_id.id
-            add.save()
+            form.save()
         return redirect('home',request.user.profile.neighborhood_id.id)
     else:
         form  = MakePostForm()
