@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from .forms import *
 from .models import *
 
@@ -39,6 +40,7 @@ def location(request):
     hood = NeighbourHood.objects.all()
     return render(request,'location.html',locals())
 
+@login_required
 def post(request):
     if request.method == 'POST':
         form = MakePostForm(request.POST,request.FILES)
@@ -50,6 +52,7 @@ def post(request):
         form  = MakePostForm()
     return render(request,'post.html',locals())
 
+@login_required
 def search_business(request):
 
     if 'business' in request.GET and request.GET["business"]:
