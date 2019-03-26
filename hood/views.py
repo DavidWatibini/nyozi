@@ -95,3 +95,14 @@ def update_index(request):
         form  = UploadForm()
 
     return render(request,'new.html', locals())
+
+def biz(request):
+    if request.method == 'POST':
+        form = BizForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            form.save()
+        return redirect('location')
+    else:
+        form  = BizForm()
+    return render(request,'business.html',locals())

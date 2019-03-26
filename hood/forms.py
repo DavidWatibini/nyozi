@@ -15,3 +15,8 @@ class UploadForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields =('user','email_address','neighborhood_id')
+
+class BizForm(forms.ModelForm):
+    class Meta:
+        model = Business
+        fields =('business_name','user','neighborhood_id','business_email')
