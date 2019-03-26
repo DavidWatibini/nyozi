@@ -10,3 +10,8 @@ class MakePostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('image_path','image_description','hood_id')
+
+class UploadForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields =('user','email_address','neighborhood_id')

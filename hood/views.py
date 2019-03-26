@@ -65,3 +65,33 @@ def search_business(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',locals())
+
+
+def profile_index(request):
+    if request.method == 'POST':
+        form = UploadForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form =UploadForm()
+
+
+        all_profile = UserProfile.objects.all()
+    return render(request,'profile.html', locals())
+
+
+def update_index(request):
+    # all_profile = Profile.objects.all()
+    profile = UserProfile.objects.get(user_id = request.user)
+    if request.method == 'POST':
+        form = UploadForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form  = UploadForm()
+
+    return render(request,'new.html', locals())

@@ -11,6 +11,8 @@ urlpatterns= [
     url(r'hood/', views.hood, name="hood"),
     url(r'post',views.post,name="post"),
     url(r'^search/', views.search_business, name='search_results'),
+    url(r'profile/',views.profile_index, name='profile'),
+    url(r'new/',views.update_index, name='new')
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
