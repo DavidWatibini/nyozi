@@ -64,12 +64,12 @@ or just use this
 
 | Behavior        | Result |
 | ------------- |:----:|
-|  |  |
-|  | |
-|  | |
-|  |  |
-|  |  |
-|   |  |
+| user loads the page | requested to login or signup |
+| user signup to the app |user is redirect to login page and later the location page |
+| user selects a hood  | user is redirected to their hood and details about the hood are loaded|
+| user Registers a hood | user is redirected to their hood and details about the hood are loaded |
+| user makes a post  | page loads the new made post |
+
 
 
 ## TDD
