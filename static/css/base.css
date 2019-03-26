@@ -103,3 +103,14 @@ img{
 .three{
   margin-left: 8.5%;
 }
+.see{
+  padding: 10px;
+  padding-top: 0;
+  border: 1px solid black;
+  box-shadow: -1px 1px 16px -1px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  transition: transform 1s;
+  width: 50%;
+  margin-top: 10%;
+
+}
