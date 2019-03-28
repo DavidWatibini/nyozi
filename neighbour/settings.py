@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'hood',
     'bootstrap4',
     'crispy_forms',
+    'social_django',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'neighbour.urls'
@@ -70,11 +72,25 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
                 'django.template.context_processors.media',
+
+
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+ 'social_core.backends.open_id.OpenIdAuth',
+ 'social_core.backends.google.GoogleOpenId',
+ 'social_core.backends.google.GoogleOAuth2',
+ 'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY ='826173863821-8od874oc1vhg3vn3aos8q24r8724h80t.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'HOTSLZ5Ok-DuSIQQX8wlmxTI'
 
 WSGI_APPLICATION = 'neighbour.wsgi.application'
 
@@ -151,5 +167,6 @@ STATICFILES_DIRS = (
 	os.path.join(BASE_DIR, 'static'),
 )
 LOGIN_REDIRECT_URL='location'
+LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL='location'
 django_heroku.settings(locals())

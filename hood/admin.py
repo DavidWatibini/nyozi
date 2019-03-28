@@ -3,7 +3,6 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Location)
-admin.site.register(NeighbourHood)
-admin.site.register(Business)
+admin.site.register(Barber)
 admin.site.register(UserProfile)
 admin.site.register(Post)

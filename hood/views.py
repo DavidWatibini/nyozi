@@ -2,16 +2,15 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
 from .forms import *
 from .models import *
 
 # Create your views here.
-def homm(request,id):
+def homm(request):
 
-    biz = Business.objects.filter(neighborhood_id=id)
-
-    post = Post.objects.filter(hood_id=id)
-
+    
+    new=Barber.objects.all()
     return render(request,'home.html', locals())
 
 def register(request):
@@ -37,7 +36,7 @@ def hood(request):
     return render(request,'hood.html',locals())
 
 def location(request):
-    hood = NeighbourHood.objects.all()
+    hood = Barber.objects.all()
     return render(request,'location.html',locals())
 
 @login_required

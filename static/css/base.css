@@ -24,18 +24,10 @@ center{
 .hood li{
   text-align: center;
 }
-.all{
-  background-image: url('https://i-h2.pinimg.com/564x/05/a9/88/05a9887f3e86f46ab637b89461cfcd5f.jpg');
-  background-repeat: no-repeat;
-  background-size: auto;
-  height: 100vh;
-
-}
 center{
   margin-left: 37%;
 }
 .one{
-  padding-top: 50%;
   font-family: 'Margarine', cursive;
 }
 .list{
@@ -46,7 +38,7 @@ center{
   margin: 10px;
   overflow: hidden;
   transition: transform 1s;
-  width:500px;
+  width:600px;
   height: 550px;
 }
 .list h5{
@@ -124,4 +116,12 @@ img{
   transition: transform 1s;
   width: 50%;
   margin-left: 25%;
+}
+.one img{
+  width:450px;
+  height: 550px;
+  margin-top: 10px;
+}
+.mine{
+  padding-top: 20%;
 }

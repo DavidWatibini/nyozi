@@ -10,32 +10,24 @@ from django.shortcuts import get_object_or_404
 
 class Location(models.Model):
     city = models.CharField(max_length=30, blank=True)
-    hood = models.CharField(max_length=30, blank=True)
 
     def __str__(self):
-        return self.hood
+        return self.city
 
-class NeighbourHood (models.Model):
-    user_id = models.ForeignKey(User,blank=True, on_delete=models.CASCADE,related_name='user',null=True)
-    hood_name = models.CharField(max_length=30, blank=True)
+class Barber(models.Model):
+    barber_name = models.CharField(max_length=30, blank=True)
+    barber_shop_name = models.CharField(max_length=30, blank=True)
     location_id = models.ForeignKey(Location,blank=True, on_delete=models.CASCADE,related_name='location',null=True)
-
-    def __str__(self):
-        return self.hood_name
-
-
-class Business(models.Model):
-    business_name = models.CharField(max_length=30, blank=True)
-    user = models.ForeignKey(User,blank=True, on_delete=models.CASCADE,related_name='neighborhood',null=True)
-    neighborhood_id = models.ForeignKey(NeighbourHood,blank=True, on_delete=models.CASCADE,related_name='neighborhood',null=True)
     business_email = models.EmailField(max_length=70,blank=True)
+    work_sample = models.ImageField(upload_to = 'sample/',default="wati.jpeg")
+
 
     def __str__(self):
-        return self.business_name
+        return self.barber_name
 
     @classmethod
-    def search_by_business_name(cls,search_term):
-        project = Business.objects.filter(business_name__icontains = search_term)
+    def search_by_barber_name(cls,search_term):
+        project = Barber.objects.filter(barber_name__icontains = search_term)
         return project
 
 
@@ -43,7 +35,7 @@ class UserProfile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE,related_name="profile")
     name = models.CharField(max_length=30, blank=True)
     email_address = models.EmailField(max_length=70,blank=True)
-    neighborhood_id = models.ForeignKey(NeighbourHood, on_delete=models.CASCADE,related_name="profile_hood",null=True)
+
     def __str__(self):
         return self.name
         class Meta:
@@ -65,4 +57,3 @@ class Post(models.Model):
 
     image_path = models.ImageField(upload_to = 'gallery/')
     image_description = models.CharField(max_length=100, blank=True)
-    hood_id = models.ForeignKey(NeighbourHood,null=True)
